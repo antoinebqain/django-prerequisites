@@ -15,4 +15,11 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
+      run: docker build . --file Dockerfile --tag django-prerequisites
+    - name: Tag the image
+      run: docker tag django-prerequisites tonybaqain/django-prerequisites:latest
+    - name: docker login
+      run: docker login -u tonybaqain -p $DOCKER_HUB_TOKEN
+    - name: docker push
+      run: docker push tonybaqain/django-prerequisites:latest
+      
