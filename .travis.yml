@@ -5,4 +5,5 @@ before_install:
   - docker login -u tonybaqain -p $token
   - docker build -t django-prerequisites .
   - docker tag django-prerequisites:latest tonybaqain/django-prerequisites:latest
+deploy:
   - docker push tonybaqain/django-prerequisites:latest
